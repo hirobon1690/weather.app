@@ -1,26 +1,60 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <v-app id="inspire">
+    <v-navigation-drawer v-model="drawer" app>
+      <v-list :items="items"></v-list>
+      <!--  -->
+    </v-navigation-drawer>
+
+    <v-app-bar app>
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+
+      <v-toolbar-title>Weather</v-toolbar-title>
+    </v-app-bar>
+
+    <v-main>
+      <v-card width="400px">
+        <WeatherIcon></WeatherIcon>
+      </v-card>
+
+      <!--  -->
+    </v-main>
+  </v-app>
+
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import WeatherIcon from './components/WeatherIcon.vue'
 
 export default {
   name: 'App',
+
   components: {
-    HelloWorld
-  }
+    HelloWorld,
+    WeatherIcon
+  },
+
+  data: () => ({
+    drawer: null,
+    items: [
+      {
+        title: 'Foo',
+        value: 'foo',
+      },
+      {
+        title: 'Bar',
+        value: 'bar',
+      },
+      {
+        title: 'Fizz',
+        value: 'fizz',
+      },
+      {
+        title: 'Buzz',
+        value: 'buzz',
+      },
+    ]
+    //
+  }),
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
